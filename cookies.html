@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy - InCyTrade</title>
+<meta name="description" content="What incytrade.com stores in your browser today (nothing tracking-related), and what changes if that ever does.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="vendor/cookieconsent/cookieconsent.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="wordmark" href="index.html" aria-label="InCyTrade home">In<span class="accent-cy">Cy</span>Trade</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html#problem">The Problem</a>
+      <a href="index.html#precedent">Precedent</a>
+      <a href="index.html#product">Platform</a>
+      <a href="index.html#team">Team</a>
+      <a class="nav-cta" href="index.html#contact">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="legal-hero">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1>Cookie Policy</h1>
+      <p class="legal-updated">Last updated August 13, 2026</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap legal-body prose">
+
+      <p><strong>This site sets exactly one cookie, and it's not a tracking cookie.</strong> No analytics, no advertising, no fingerprinting, no third-party embeds. The one cookie is set by the consent-notice widget itself, purely to remember the choice you made - a use GDPR/ePrivacy, the Israeli Privacy Protection Law, and CCPA/CPRA all recognize as "strictly necessary," exempt from needing its own separate consent.</p>
+
+      <h2>What "no tracking cookies" actually means here</h2>
+      <p>Every font, script, and stylesheet this site loads is served from incytrade.com itself. Fonts, in particular, are deliberately self-hosted rather than pulled from Google Fonts or any other third-party font CDN at page-load time - loading fonts from a third party would silently send every visitor's IP address to that third party before any consent is collected, which is the single most common cookie/tracking-adjacent compliance defect on marketing sites in the EU (a German court held exactly this violates GDPR in a January 2022 ruling). Self-hosting removes that request entirely. The consent-notice widget itself is likewise self-hosted, not loaded from a third-party CDN, for the same reason.</p>
+
+      <h2>The one cookie we set</h2>
+      <p>The consent notice you see at the bottom of the page is powered by <a href="https://github.com/orestbida/cookieconsent" target="_blank" rel="noopener">CookieConsent</a>, an open-source, independently maintained library - used specifically so that consent behavior stays correct and current without us reinventing it. When you dismiss the notice, it sets a single cookie that stores only your consent choice and a timestamp - no identifier that's used for tracking, no data shared with anyone, nothing sent anywhere but your own browser. It expires after roughly six months, after which the notice reappears. You can clear it any time via your browser's site-data settings.</p>
+
+      <div class="legal-table-wrap">
+        <table class="legal-table">
+          <thead>
+            <tr><th>Category</th><th>Used on this site?</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Strictly necessary</td><td>One cookie</td><td>Records your consent choice, ~180-day expiry</td></tr>
+            <tr><td>Preferences</td><td>Not used</td><td>-</td></tr>
+            <tr><td>Analytics / performance</td><td>Not used</td><td>No analytics script is loaded, by anyone</td></tr>
+            <tr><td>Advertising / marketing</td><td>Not used</td><td>No ad network, no retargeting pixel</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>If that ever changes</h2>
+      <p>The consent widget already defines an "analytics" category - currently switched off, with no service attached to it, so accepting the notice today grants nothing beyond the necessary cookie above. If we add real analytics or any other non-essential script in the future, that category is where it will be gated: you'll be shown a real Accept/Reject choice, with reject exactly as easy as accept, before any such script runs. Nothing will start collecting data silently ahead of that change.</p>
+
+      <h2>Questions</h2>
+      <p>Email <a href="mailto:support@incytrade.com">support@incytrade.com</a>.</p>
+
+      <div class="legal-note">
+        <strong>Note on this document.</strong> This is accurate to the site's current code, not a generic template - it will need a real update (not just a date change) the day any actual tracking, analytics, or advertising capability is switched on. See also the <a href="privacy.html">Privacy Policy</a>.
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <a class="wordmark wordmark-small" href="index.html">In<span class="accent-cy">Cy</span>Trade</a>
+    <p class="footer-tagline">The breach and the trade are the same event. Nobody watches both.</p>
+    <p class="footer-meta">incytrade.com</p>
+  </div>
+  <div class="wrap footer-legal">
+    <p class="footer-copyright">&copy; 2026 InCyTrade. All rights reserved.</p>
+    <nav class="footer-legal-nav" aria-label="Legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html" aria-current="page">Cookie Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="accessibility.html">Accessibility Statement</a>
+    </nav>
+  </div>
+  <div class="wrap footer-imprint">
+    <p>InCyTrade is an early-stage venture based in Tel-Aviv, Israel, operated by its founders, Raphael Cohen and Yaron Golfand. Written enquiries: <a href="mailto:support@incytrade.com">support@incytrade.com</a>. Registered company details will be published here once incorporation is complete.</p>
+    <p>Nothing on this site is an offer to sell, or a solicitation of an offer to buy, any security.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script type="module" src="cookie-consent-config.js"></script>
+</body>
+</html>

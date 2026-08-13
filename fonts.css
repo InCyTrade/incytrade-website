@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Self-hosted IBM Plex Sans / IBM Plex Mono.
+
+   Deliberately not loaded from Google Fonts: a <link> to
+   fonts.googleapis.com/fonts.gstatic.com sends every visitor's IP address
+   to Google at page load, before any consent is collected. A German court
+   (LG München I, Jan 2022, 3 O 17493/20) held that this breaches GDPR
+   Art. 6 when done without a legal basis, and it's the single most common
+   real-world cookie/tracking-adjacent compliance defect on marketing sites
+   in the EU. Self-hosting removes the third-party request entirely, so no
+   consent banner is needed just to render text.
+
+   Files in fonts/ are the original IBM Plex webfonts (SIL Open Font
+   License 1.1 — see fonts/LICENSE.txt), fetched directly from
+   github.com/IBM/plex, not proxied through any font-serving CDN.
+   ========================================================================== */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/IBMPlexSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/IBMPlexMono-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/IBMPlexMono-SemiBold.woff2") format("woff2");
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility Statement - InCyTrade</title>
+<meta name="description" content="InCyTrade's accessibility conformance target, what's been implemented, known limitations, and how to report a barrier.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="vendor/cookieconsent/cookieconsent.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="wordmark" href="index.html" aria-label="InCyTrade home">In<span class="accent-cy">Cy</span>Trade</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html#problem">The Problem</a>
+      <a href="index.html#precedent">Precedent</a>
+      <a href="index.html#product">Platform</a>
+      <a href="index.html#team">Team</a>
+      <a class="nav-cta" href="index.html#contact">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="legal-hero">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1>Accessibility Statement</h1>
+      <p class="legal-updated">Last updated August 13, 2026</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap legal-body prose">
+
+      <p>InCyTrade wants this site usable by everyone, including people using a keyboard alone, a screen reader, magnification, or who need reduced motion. This page states the standard we build to, what is implemented, and what is scheduled next.</p>
+
+      <h2>Conformance target</h2>
+      <p>We build to <strong>WCAG 2.1 Level AA</strong>. That standard underlies each jurisdiction this site is meant to work for: it's the technical basis for <strong>EN 301 549</strong> (the EU standard behind the European Accessibility Act), it's what <strong>Israeli Standard 5568</strong> is built on (the standard referenced by Israel's accessibility regulations under the Equal Rights for Persons with Disabilities Law), and it's the benchmark U.S. courts and the DOJ most commonly reference for ADA Title III compliance, even though no single binding federal technical rule yet covers private commercial websites the way it does U.S. state and local government sites.</p>
+
+      <h2>What's implemented</h2>
+      <ul>
+        <li>Semantic landmarks throughout (header, nav, main, footer) and a single, logically ordered heading hierarchy per page.</li>
+        <li>A "Skip to content" link, visible on keyboard focus, at the top of every page.</li>
+        <li>Full keyboard operability - every interactive element (navigation, the mobile menu toggle, links, buttons) works without a mouse, including closing the mobile menu with the Escape key.</li>
+        <li>A visible focus indicator on every focusable element - nothing here removes the browser's focus outline without replacing it.</li>
+        <li>Text and UI color combinations checked against WCAG AA contrast thresholds (4.5:1 for normal text, 3:1 for large text), for both the default and hover states we use.</li>
+        <li>No content relies on color alone to convey information that isn't also stated in text.</li>
+        <li>Text reflows and stays readable at up to 200% browser zoom. Nothing disables pinch-to-zoom.</li>
+        <li>Motion respects prefers-reduced-motion - the scroll-triggered reveal effect and smooth-scrolling are both disabled for anyone whose OS requests reduced motion.</li>
+        <li>No flashing, strobing, or auto-playing media anywhere on the site.</li>
+        <li>Anchor links account for the sticky header, so a jumped-to section never lands hidden underneath it.</li>
+      </ul>
+
+      <h2>How this is verified</h2>
+      <p>Every page is checked automatically against WCAG 2.1 A and AA rules on each change, and currently passes with no violations reported. Automated testing catches a meaningful share of issues but not all of them, so it runs alongside manual keyboard and zoom checks at build time.</p>
+
+      <h2>Ongoing work</h2>
+      <ul>
+        <li>A structured manual review with screen readers (NVDA, JAWS and VoiceOver) is scheduled, alongside a third-party conformance audit.</li>
+        <li>A Hebrew version of this site is planned for Israeli visitors who would prefer one.</li>
+        <li>Documents distributed separately from this site are reviewed for accessibility on their own schedule.</li>
+      </ul>
+
+      <h2>Reporting a barrier</h2>
+      <p>If you hit an accessibility problem anywhere on this site, tell us - email <a href="mailto:support@incytrade.com">support@incytrade.com</a> with the page and what happened. We will acknowledge your message and work to resolve genuine barriers promptly. If a fix will take time, we will tell you what the interim alternative is.</p>
+
+      <div class="legal-note">
+        <strong>Note on this document.</strong> This reflects what is implemented in this site's code as of the date above, rather than a template claim of full conformance. It is revised as the site changes and as the reviews listed above are completed.
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <a class="wordmark wordmark-small" href="index.html">In<span class="accent-cy">Cy</span>Trade</a>
+    <p class="footer-tagline">The breach and the trade are the same event. Nobody watches both.</p>
+    <p class="footer-meta">incytrade.com</p>
+  </div>
+  <div class="wrap footer-legal">
+    <p class="footer-copyright">&copy; 2026 InCyTrade. All rights reserved.</p>
+    <nav class="footer-legal-nav" aria-label="Legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookie Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="accessibility.html" aria-current="page">Accessibility Statement</a>
+    </nav>
+  </div>
+  <div class="wrap footer-imprint">
+    <p>InCyTrade is an early-stage venture based in Tel-Aviv, Israel, operated by its founders, Raphael Cohen and Yaron Golfand. Written enquiries: <a href="mailto:support@incytrade.com">support@incytrade.com</a>. Registered company details will be published here once incorporation is complete.</p>
+    <p>Nothing on this site is an offer to sell, or a solicitation of an offer to buy, any security.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script type="module" src="cookie-consent-config.js"></script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InCyTrade - Cyber-Enabled Insider Trading Detection</title>
+<meta name="description" content="InCyTrade correlates market-abuse signals with enterprise cyber and access telemetry to surface cyber-enabled insider trading. The breach and the trade are the same event. Nobody watches both.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="vendor/cookieconsent/cookieconsent.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="wordmark" href="#top" aria-label="InCyTrade home">In<span class="accent-cy">Cy</span>Trade</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="#problem">The Problem</a>
+      <a href="#precedent">Precedent</a>
+      <a href="#product">Platform</a>
+      <a href="#team">Team</a>
+      <a class="nav-cta" href="#contact">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Intelligence&nbsp;·&nbsp;Cyber&nbsp;·&nbsp;Trade</p>
+        <h1 class="hero-quote">&ldquo;The breach and the trade are the same event.<br>Nobody watches both.&rdquo;</h1>
+        <p class="hero-sub">InCyTrade correlates market-abuse signals with enterprise cyber and access telemetry to surface cyber-enabled insider trading - closing the one gap no SOC tool and no market-surveillance tool covers alone.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Request a briefing</a>
+          <a class="btn btn-ghost" href="#product">See how it works</a>
+        </div>
+      </div>
+
+      <!-- Decorative. The thesis of the product, drawn: one tape, one telemetry
+           lane, and the moments where the two line up. Marked aria-hidden
+           because the sentence above already says it in words. -->
+      <div class="hero-viz-col">
+      <div class="hero-viz" aria-hidden="true">
+        <div class="viz-head">
+          <span class="viz-live"><i></i>Live</span>
+          <span class="viz-keys">
+            <span class="viz-key viz-key-price">Market</span>
+            <span class="viz-key viz-key-alert">Access telemetry</span>
+            <span class="viz-key viz-key-corr">Correlated</span>
+          </span>
+        </div>
+        <canvas class="viz-canvas" id="corrCanvas"></canvas>
+      </div>
+      <p class="viz-caption">Cybercrime has always gone hand in hand with <span>financial crime.</span></p>
+      </div>
+      <div class="signal-strip" role="img" aria-label="Illustrative narrowing from 40,000 identities in the estate to 600 inside the current catalyst window to 100 assets held under elevated telemetry">
+        <div class="signal-cell">
+          <span class="signal-num">40,000</span>
+          <span class="signal-label">identities in the estate</span>
+        </div>
+        <span class="signal-arrow" aria-hidden="true">→</span>
+        <div class="signal-cell">
+          <span class="signal-num">600</span>
+          <span class="signal-label">inside this catalyst window</span>
+        </div>
+        <span class="signal-arrow" aria-hidden="true">→</span>
+        <div class="signal-cell">
+          <span class="signal-num">100</span>
+          <span class="signal-label">held under elevated telemetry</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Shift</p>
+        <h2>Cybercrime went quiet.</h2>
+      </div>
+      <div class="prose prose-lead">
+        <p>Cybercrime has always run as a business: steal the database, sell the access, deploy ransomware, name a price. The most sophisticated threat actors have stopped playing it that way. They're staying below the radar - holding access instead of spending it, and converting an intrusion into a financial trade the victim never learns occurred.</p>
+        <p><strong>This is the shape cyberattacks are taking next. InCyTrade exists to catch it.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Activity</p>
+        <h2>No ransom note. No negotiation. No victim ever knows.</h2>
+      </div>
+      <div class="prose prose-lead">
+        <p>The new play is quiet. The actor doesn't encrypt the estate - they sit on the CFO's mailbox, the M&amp;A data room, the quarter-close file share, or a draft press release sitting with Investor Relations, and they trade the information. The information monetizes itself in a liquid market, and the access is never burned - it can be worked again next quarter, next catalyst, indefinitely.</p>
+        <p class="callout-line"><strong>The behavior is established. The detection layer does not exist.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Blind Spot</p>
+        <h2>Two teams, two tickets, zero shared visibility.</h2>
+      </div>
+      <div class="split-columns">
+        <div class="split-col">
+          <p class="split-label">Market side</p>
+          <p>Regulators, exchanges, and compliance vendors see the tape - anomalous flow, catalyst timing, cluster behavior. They have zero visibility into whether the issuer was compromised that week.</p>
+        </div>
+        <div class="split-col">
+          <p class="split-label">Enterprise side</p>
+          <p>The SOC sees the estate - EDR, SIEM, identity, DLP, file audit. They have zero visibility into whether the options chain moved two days after they quietly closed the ticket.</p>
+        </div>
+      </div>
+      <div class="callout-band">
+        <p>An access anomaly on the deal folder and an options anomaly 48 hours later are, today, <strong>two unrelated tickets, in two unrelated systems, owned by two teams that never speak.</strong> InCyTrade is the join.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="precedent">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Precedent</p>
+        <h2>Hack-to-trade - the prosecuted record.</h2>
+      </div>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <p class="timeline-date">2010 – 2015</p>
+          <p class="timeline-title">Newswires</p>
+          <p class="timeline-detail">Three wire services breached. Roughly 150,000 pre-release announcements accessed, about 800 traded.</p>
+          <p class="timeline-stat">&gt;$100M<span class="timeline-stat-sub">32 charged &middot; <a href="https://www.sec.gov/newsroom/press-releases/2015-163" rel="noopener">SEC 2015-163</a></span></p>
+        </li>
+        <li class="timeline-item">
+          <p class="timeline-date">2013 – 2015</p>
+          <p class="timeline-title">FIN4</p>
+          <p class="timeline-detail">Executive, legal, and compliance mailboxes targeted at more than 100 companies.</p>
+          <p class="timeline-stat">~2/3<span class="timeline-stat-sub">healthcare &amp; pharma &middot; FireEye, 2014</span></p>
+        </li>
+        <li class="timeline-item">
+          <p class="timeline-date">2016</p>
+          <p class="timeline-title">SEC EDGAR</p>
+          <p class="timeline-detail">Non-public test filings extracted directly from the filing system itself.</p>
+          <p class="timeline-stat">$4.1M<span class="timeline-stat-sub">157 earnings &middot; charged 2019 &middot; <a href="https://www.sec.gov/newsroom/press-releases/2019-1" rel="noopener">SEC 2019-1</a></span></p>
+        </li>
+        <li class="timeline-item">
+          <p class="timeline-date">2018 – 2020</p>
+          <p class="timeline-title">Filing agents</p>
+          <p class="timeline-detail">Two SEC filing agents breached. Prosecutors described trading around more than 2,000 earnings events.</p>
+          <p class="timeline-stat">~$9M&nbsp;→&nbsp;~$90M<span class="timeline-stat-sub">convicted 2023 &middot; <a href="https://www.justice.gov/usao-ma/pr/russian-businessman-found-guilty-90-million-hack-trade-conspiracy" rel="noopener">DOJ</a></span></p>
+        </li>
+        <li class="timeline-item">
+          <p class="timeline-date">2019 – 2020</p>
+          <p class="timeline-title">Issuers, directly</p>
+          <p class="timeline-detail">Five public companies. Senior executives' account passwords reset to obtain pre-release earnings information.</p>
+          <p class="timeline-stat">$3.75M<span class="timeline-stat-sub">14 earnings &middot; charged 2024 &middot; <a href="https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26141" rel="noopener">SEC LR-26141</a></span></p>
+        </li>
+      </ol>
+
+      <div class="subgrid">
+        <div class="subgrid-block">
+          <p class="split-label">Regulatory convergence</p>
+          <dl class="fact-list">
+            <div><dt>Dec 2023</dt><dd>Material cyber incidents disclosable within four business days of the materiality determination (SEC Item&nbsp;1.05). <a href="https://www.sec.gov/newsroom/press-releases/2023-139" rel="noopener">Final rule</a>.</dd></div>
+            <div><dt>Since 2024</dt><dd>Incidents now surface as dated 8-K filings, creating a public, timestamped record that can be placed alongside market activity.</dd></div>
+            <div><dt>Feb 2025</dt><dd>SEC stands up its Cyber and Emerging Technologies Unit. Hacking to obtain material nonpublic information is a named priority. <a href="https://www.sec.gov/newsroom/press-releases/2025-42" rel="noopener">Announcement</a>.</dd></div>
+          </dl>
+        </div>
+        <div class="subgrid-block">
+          <p class="split-label">Named actors</p>
+          <dl class="fact-list">
+            <div><dt>FIN4</dt><dd>Hack-to-trade specialist. Executive mailboxes, 2013–2015.</dd></div>
+            <div><dt>Cl0p</dt><dd>Mass document theft via managed file-transfer platforms.</dd></div>
+            <div><dt>ALPHV / BlackCat</dt><dd>Filed an SEC complaint against its own victim, 2023.</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="subgrid subgrid-row-2">
+        <div class="subgrid-block">
+          <p class="split-label">Independent research</p>
+          <dl class="fact-list">
+            <div><dt>25%</dt><dd>Of 1,859 U.S. takeovers studied, about a quarter showed abnormal equity-options volume in the 30 days before announcement. <a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2018.3122" rel="noopener">Management Science, 2019</a>.</dd></div>
+            <div><dt>~8%</dt><dd>The share of those same deals the SEC litigated. The gap between the two numbers is the detection problem, measured by someone else.</dd></div>
+            <div><dt>Breaches</dt><dd>Options activity before a corporate data-breach announcement carries statistical predictive power for the announcement itself. <a href="https://www.sciencedirect.com/science/article/abs/pii/S104402832200076X" rel="noopener">Peer-reviewed study, 2022</a>.</dd></div>
+          </dl>
+        </div>
+        <div class="subgrid-block">
+          <p class="split-label">Enforcement record</p>
+          <dl class="fact-list">
+            <div><dt>Dec 2023</dt><dd>In the twelve months after the rule took effect, 54 issuers disclosed 55 cyber incidents on Form 8-K. <a href="https://www.knowntrends.com/2025/02/snapshot-the-first-year-of-cybersecurity-incident-filings-on-form-8-k-since-adoption-of-new-rules/" rel="noopener">Filing survey</a>.</dd></div>
+            <div><dt>Jul 2024</dt><dd>SEC staff ran a sweep review of Item 1.05 filings and issued 14 comment letters, most of them about how materiality was described. <a href="https://wp.nyu.edu/compliance_enforcement/2025/03/25/lessons-learned-one-year-of-form-8-k-material-cybersecurity-incident-reporting/" rel="noopener">Review</a>.</dd></div>
+            <div><dt>2023 - 2024</dt><dd>Six issuers settled charges over cyber disclosure or the controls behind it, for about $12.1M in civil penalties in total: <a href="https://www.sec.gov/newsroom/press-releases/2023-48" rel="noopener">$3M in 2023</a>, <a href="https://www.sec.gov/newsroom/press-releases/2024-75" rel="noopener">$2.125M in June 2024</a>, and <a href="https://www.sec.gov/newsroom/press-releases/2024-174" rel="noopener">roughly $7M across four issuers in October 2024</a>.</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <p class="source-note">Figures above are drawn from the linked SEC and Department of Justice releases, from FireEye's 2014 report <em>Hacking the Street? FIN4 Likely Playing the Market</em>, and from the peer-reviewed and filing-survey sources linked in each row. Charging documents describe allegations. Convictions are noted where they occurred. Affected companies are not named here because they are not named in the public charging documents.</p>
+    </div>
+  </section>
+
+  <section class="section band-dark">
+    <div class="wrap">
+      <p class="band-quote">Actors have traded on what they steal for years, under the perfect cover of the market - and everyone looks away. <span class="accent-cy-text">No product watches both sides at once.</span> Sooner or later the regulator will make it mandatory.</p>
+    </div>
+  </section>
+
+  <section class="section" id="product">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Platform</p>
+        <h2>One platform. Two engines. Four cylinders.</h2>
+        <p class="section-dek">InCyTrade's collection layer runs in its own cloud. The mapping and correlation layers run on-prem, inside your estate, reading directly from the tools you already run.</p>
+      </div>
+
+      <div class="layer-grid">
+        <article class="layer-card layer-card-teal">
+          <p class="layer-kicker">Modules 01 + 02 · Prevention</p>
+          <h3>Coverage &amp; Focus</h3>
+          <p>Narrow the estate to what actually matters in the current catalyst window. The window shifts month to month - earnings, then M&amp;A, then a filing - and the scope shifts with it.</p>
+          <ul class="layer-list">
+            <li>External MNPI exposure, surfaced only when a leak carries real, asset-specific impact.</li>
+            <li>Catalyst-tuned attack-path mapping - the identities that can actually reach this window's crown jewels, not just the finance team.</li>
+            <li>The narrowest, highest-sensitivity assets get temporary, logging-only telemetry hardening for the duration of the window.</li>
+          </ul>
+        </article>
+        <article class="layer-card layer-card-blue">
+          <p class="layer-kicker">Modules 03 + 04 · Correlation</p>
+          <h3>Probability &amp; Materiality</h3>
+          <p>Correlate a real cyber event with the market. This is the layer built to help prioritise which incident to assess first against the SEC's four-business-day disclosure clock.</p>
+          <ul class="layer-list">
+            <li>Live correlation: does an internal access anomaly explain a suspected transaction on a known, scheduled catalyst?</li>
+            <li>Retroactive correlation: does a prior cyber or access event explain an unexplained market move on a surprise catalyst?</li>
+            <li>A scored, time-bounded finding with its supporting timeline attached - intended to support a disclosure decision, not to replace the judgement behind it.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Team</p>
+        <h2>Built by operators who've sat on both sides of this problem.</h2>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <p class="team-name">Raphael Cohen</p>
+          <p class="team-role">Co-Founder &amp; CEO</p>
+          <p class="team-bio">Formerly Unit 8200 and the Israeli Prime Minister's Office.</p>
+        </article>
+        <article class="team-card">
+          <p class="team-name">Yaron Golfand</p>
+          <p class="team-role">Co-Founder &amp; CTO</p>
+          <p class="team-bio">Formerly Unit 8200 and the Israeli Prime Minister's Office.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-dark" id="contact">
+    <div class="wrap contact-inner">
+      <p class="eyebrow eyebrow-on-dark">Get in touch</p>
+      <h2 class="contact-heading">Let's talk.</h2>
+      <p class="contact-body">If you run security, compliance, or legal for a public company, we want to hear from you.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="mailto:support@incytrade.com">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <a class="wordmark wordmark-small" href="#top">In<span class="accent-cy">Cy</span>Trade</a>
+    <p class="footer-tagline">The breach and the trade are the same event. Nobody watches both.</p>
+    <p class="footer-meta">incytrade.com</p>
+  </div>
+  <div class="wrap footer-legal">
+    <p class="footer-copyright">&copy; 2026 InCyTrade. All rights reserved.</p>
+    <nav class="footer-legal-nav" aria-label="Legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookie Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="accessibility.html">Accessibility Statement</a>
+    </nav>
+  </div>
+  <div class="wrap footer-imprint">
+    <p>InCyTrade is an early-stage venture based in Tel-Aviv, Israel, operated by its founders, Raphael Cohen and Yaron Golfand. Written enquiries: <a href="mailto:support@incytrade.com">support@incytrade.com</a>. Registered company details will be published here once incorporation is complete.</p>
+    <p>Nothing on this site is an offer to sell, or a solicitation of an offer to buy, any security.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script type="module" src="cookie-consent-config.js"></script>
+</body>
+</html>
