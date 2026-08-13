@@ -1130,9 +1130,64 @@ section[id] {
   .timeline-detail { min-height: 0; }
 }
 
+@media (max-width: 700px) {
+  /* On a phone the page is one narrow column, so the generous desktop padding
+     eats the reading width. Everything below trades inner padding for line
+     length, and unstacks the two-column pieces that were squeezing text into
+     a third of the screen. */
+  .wrap { padding: 0 1.35rem; }
+
+  .split-col,
+  .layer-card,
+  .module-card,
+  .team-card { padding: 1.6rem 1.35rem; }
+
+  .callout-band { padding: 1.5rem 1.35rem; }
+
+  /* term-and-definition rows: label above the text instead of beside it */
+  .fact-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  /* full-width buttons read as deliberate on a phone, half-width reads broken */
+  .hero-ctas { gap: 0.75rem; }
+  .hero-ctas .btn,
+  .contact-inner .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+  .footer-tagline {
+    text-align: left;
+    flex: none;
+  }
+  .footer-legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+  .footer-legal-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.1rem;
+  }
+
+  .legal-table { font-size: 0.85rem; }
+  .legal-table th,
+  .legal-table td { padding: 0.6rem 0.5rem; }
+}
+
 @media (max-width: 480px) {
   .timeline { grid-template-columns: 1fr; }
   .signal-strip { gap: 1rem; }
+  .hero-quote { font-size: 1.95rem; }
 }
 
 /* Provenance line under the precedent timeline. */
