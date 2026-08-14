@@ -317,6 +317,26 @@
   </div>
 </footer>
 
+<!-- Floating "Why now?" note. Deliberately outside the page flow so it never
+     covers content, and it steps aside while the consent notice is showing. -->
+<div class="whynow" id="whynow">
+  <div class="whynow-panel" id="whynowPanel" role="dialog" aria-modal="false" aria-labelledby="whynowTitle" hidden>
+    <div class="whynow-head">
+      <p class="whynow-title" id="whynowTitle"><span class="whynow-dot" aria-hidden="true"></span>Why now?</p>
+      <button type="button" class="whynow-close" id="whynowClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="whynow-body">
+      <p class="whynow-text" id="whynowText" aria-hidden="true"></p>
+      <p class="whynow-sr">Today, while running a routine ransomware attack, any threat actor exfiltrating 2TB of data can simply feed the folder to an AI-powered LLM, ask which options to buy, and secure multi-million dollar gains right from his phone - under the perfect cover of market noise.</p>
+    </div>
+  </div>
+  <button type="button" class="whynow-fab" id="whynowFab" aria-expanded="false" aria-controls="whynowPanel">
+    <span class="whynow-teaser" id="whynowTeaser" aria-hidden="true">Why now?</span>
+    <span class="whynow-glyph" aria-hidden="true">?</span>
+    <span class="whynow-label">Why now?</span>
+  </button>
+</div>
+
 <script src="script.js"></script>
 <script type="module" src="cookie-consent-config.js"></script>
 </body>

@@ -382,6 +382,96 @@
     });
   }
 
+  // ---- "Why now?" floating note -------------------------------------------
+  // The answer types itself out, which is the whole point of the format: it
+  // reads as something being told to you rather than another block of copy.
+  // The full sentence also sits in the DOM for screen readers from the start,
+  // so nobody has to wait for an animation to read it.
+  function initWhyNow() {
+    var root = document.getElementById("whynow");
+    var fab = document.getElementById("whynowFab");
+    var panel = document.getElementById("whynowPanel");
+    var closeBtn = document.getElementById("whynowClose");
+    var target = document.getElementById("whynowText");
+    var teaser = document.getElementById("whynowTeaser");
+    if (!root || !fab || !panel || !target) return;
+
+    var full = panel.querySelector(".whynow-sr").textContent.trim();
+    var timer = null;
+    var typed = false;
+
+    function type() {
+      if (prefersReducedMotion) {
+        target.textContent = full;
+        return;
+      }
+      var i = 0;
+      root.classList.add("is-typing");
+      timer = setInterval(function () {
+        // a few characters per tick keeps a long paragraph from dragging
+        i = Math.min(i + 2, full.length);
+        target.textContent = full.slice(0, i);
+        if (i >= full.length) {
+          clearInterval(timer);
+          timer = null;
+          root.classList.remove("is-typing");
+        }
+      }, 18);
+    }
+
+    function open() {
+      panel.hidden = false;
+      root.classList.add("is-open");
+      root.classList.remove("is-hinting");
+      fab.setAttribute("aria-expanded", "true");
+      if (!typed) {
+        typed = true;
+        type();
+      }
+      closeBtn.focus();
+    }
+
+    function close() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+        target.textContent = full;
+        root.classList.remove("is-typing");
+      }
+      panel.hidden = true;
+      root.classList.remove("is-open");
+      fab.setAttribute("aria-expanded", "false");
+      fab.focus();
+    }
+
+    fab.addEventListener("click", function () {
+      if (root.classList.contains("is-open")) {
+        close();
+      } else {
+        open();
+      }
+    });
+
+    closeBtn.addEventListener("click", close);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && root.classList.contains("is-open")) close();
+    });
+
+    // show the label once shortly after load, so the circle is not a mystery
+    if (teaser && !prefersReducedMotion) {
+      setTimeout(function () {
+        if (root.classList.contains("is-open")) return;
+        root.classList.add("is-hinting");
+        setTimeout(function () {
+          root.classList.remove("is-hinting");
+        }, 5000);
+      }, 2500);
+    }
+  }
+
+  initWhyNow();
+
   runCorrelationViz(!prefersReducedMotion);
 
   if (prefersReducedMotion) return;
