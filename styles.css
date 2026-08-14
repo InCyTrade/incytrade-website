@@ -139,7 +139,7 @@ section[id] {
 .wordmark {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   letter-spacing: -0.01em;
   text-decoration: none;
   color: var(--navy-900);
@@ -210,6 +210,23 @@ section[id] {
     radial-gradient(circle at 88% -10%, rgba(46, 196, 182, 0.16), transparent 55%);
   color: var(--paper-0);
   padding: 6.5rem 0 4.5rem;
+}
+
+/* On a phone the desktop rhythm reads as dead space rather than air: the
+   headline sits low, and the chart is two thumb-flicks below the fold. These
+   tighten the vertical gaps and lift the type a step, so the page keeps the
+   density it has on a desktop. Nothing moves and nothing is removed. */
+@media (max-width: 700px) {
+  .hero { padding: 3.25rem 0 2.75rem; }
+  .hero-quote { margin-bottom: 1.5rem; }
+  .hero-sub { margin-bottom: 1.75rem; }
+  .hero-ctas { margin-bottom: 2rem; }
+  .hero-viz { margin-top: 0; }
+  .hero-viz-col { margin-bottom: 2.25rem; }
+  .viz-canvas { height: 270px; }
+  .signal-strip { padding-top: 1.75rem; }
+  .section { padding: 3.25rem 0; }
+  .section-head { margin-bottom: 1.75rem; }
 }
 
 /* ---- Hero correlation visual ------------------------------------------- */
@@ -877,6 +894,7 @@ section[id] {
 
 .footer-row .wordmark {
   color: var(--paper-0);
+  font-size: 1.25rem;
 }
 
 .footer-tagline {
