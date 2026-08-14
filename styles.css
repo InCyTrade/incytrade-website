@@ -217,6 +217,23 @@ section[id] {
    tighten the vertical gaps and lift the type a step, so the page keeps the
    density it has on a desktop. Nothing moves and nothing is removed. */
 @media (max-width: 700px) {
+  /* The display type is where a phone layout usually gives itself away. On a
+     desktop the headline has room to breathe at a loose line height. Shrunk to
+     a phone it reads like body copy. Larger, tighter and with the tracking
+     pulled in makes the same words read as a headline again. */
+  .hero-quote {
+    font-size: 2.15rem;
+    line-height: 1.08;
+    letter-spacing: -0.022em;
+  }
+
+  .section-head h2,
+  .band-quote,
+  .contact-inner h2 {
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+  }
+
   .hero { padding: 3.25rem 0 2.75rem; }
   .hero-quote { margin-bottom: 1.5rem; }
   .hero-sub { margin-bottom: 1.75rem; }
@@ -1205,7 +1222,7 @@ section[id] {
 @media (max-width: 480px) {
   .timeline { grid-template-columns: 1fr; }
   .signal-strip { gap: 1rem; }
-  .hero-quote { font-size: 1.95rem; }
+  .hero-quote { font-size: 2.12rem; }
 }
 
 /* Provenance line under the precedent timeline. */
