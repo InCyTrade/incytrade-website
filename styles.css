@@ -1684,3 +1684,33 @@ html.show--consent .whynow { bottom: 15.5rem; }
   height: 20px;
   display: block;
 }
+
+/* ---- The phone fold ------------------------------------------------------ */
+/* Three earlier media blocks each set part of the hero's phone spacing, and
+   the last one wins. Rather than chase them, the fold is settled once, here,
+   at the end of the file. Everything is inside a max-width query, so the
+   desktop layout is untouched by design and not by luck.
+
+   The goal is the one thing that separates a phone page that looks built from
+   one that looks typed: the live panel has to land whole inside the first
+   screen, under the headline, without the reader scrolling for it. */
+@media (max-width: 700px) {
+  .hero { padding: 2.4rem 0 2.5rem; }
+
+  .hero .eyebrow { margin-bottom: 0.7rem; }
+
+  .hero-quote { margin-bottom: 1.05rem; }
+
+  /* At desktop size this paragraph runs seven lines on a 390px screen and
+     reads as a wall of text. One step down in size, with the leading tightened
+     to match, keeps it comfortable and buys back the height the panel needs. */
+  .hero-sub {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-viz-col { margin-top: 0; margin-bottom: 1.5rem; }
+  .hero-viz { margin-top: 0; padding: 0.7rem 0.8rem 0.6rem; }
+  .hero-ctas { margin-bottom: 1.9rem; }
+}
