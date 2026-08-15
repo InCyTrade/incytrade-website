@@ -1044,7 +1044,6 @@ section[id] {
 .legal-body strong { color: var(--navy-900); }
 
 
-
 .placeholder {
   color: var(--blue-600);
   background: var(--blue-100);
@@ -1285,14 +1284,12 @@ section[id] {
   text-decoration-color: var(--teal-500);
 }
 
-
 /* Second row of evidence blocks under the timeline. */
 .subgrid-row-2 {
   margin-top: 2.5rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--line-200);
 }
-
 
 /* The consent notice is a compact box in the corner rather than a full-width
    bar, so it never sits on top of the hero figures. */
@@ -1508,4 +1505,53 @@ html.show--consent .whynow { bottom: 15.5rem; }
   .whynow.is-open .whynow-panel,
   .whynow.is-typing .whynow-text::after { animation: none; }
   .whynow-fab:hover { transform: none; }
+}
+
+/* ---- The category ------------------------------------------------------- */
+
+/* Stated once in the hero, under the chart: the short form large enough to
+   remember, the long form small enough not to compete with the headline. */
+/* Centred under the panel and ruled across its full width, so it reads as the
+   panel's caption rather than as a stray label hanging off the left edge. */
+.category {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.85rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #1e2f3d;
+  text-align: center;
+}
+
+.category-abbr {
+  font-family: var(--font-mono);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--teal-500);
+  line-height: 1;
+}
+
+.category-full {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted-400);
+}
+
+
+@media (max-width: 700px) {
+  .category {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1.35rem;
+    padding-top: 1.1rem;
+  }
+  .category-abbr { font-size: 1.5rem; }
+  .category-full { font-size: 0.74rem; letter-spacing: 0.12em; }
 }
