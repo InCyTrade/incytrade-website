@@ -1661,3 +1661,26 @@ html.show--consent .whynow { bottom: 15.5rem; }
   -webkit-mask-image: radial-gradient(circle at 22% 50%, #000 0%, transparent 80%);
   mask-image: radial-gradient(circle at 22% 50%, #000 0%, transparent 80%);
 }
+
+/* ---- Footer social marks ------------------------------------------------- */
+/* Placeholders until the accounts exist: they carry no href, so nothing is
+   focusable and nothing is announced as a link that goes nowhere. */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-social .social-link {
+  display: inline-flex;
+  color: var(--teal-500);
+}
+
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
