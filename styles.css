@@ -209,7 +209,7 @@ section[id] {
   background-image:
     radial-gradient(circle at 88% -10%, rgba(46, 196, 182, 0.16), transparent 55%);
   color: var(--paper-0);
-  padding: 6.5rem 0 4.5rem;
+  padding: 5rem 0 6rem;
 }
 
 /* On a phone the desktop rhythm reads as dead space rather than air: the
@@ -391,7 +391,7 @@ section[id] {
 
 .hero-sub {
   max-width: 62ch;
-  font-size: 1.1rem;
+  font-size: 0.98rem;
   color: #c7d3dc;
   margin-bottom: 2.25rem;
 }
@@ -1391,11 +1391,32 @@ html.show--consent .whynow { bottom: 15.5rem; }
 .whynow.is-open .whynow-teaser { opacity: 0; }
 
 .whynow-panel {
+  position: relative;
   width: 360px;
   max-width: calc(100vw - 3rem);
   background: var(--navy-950);
   border: 1px solid #24384a;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+/* the same squares as the rest of the dark surfaces, on a tighter pitch so
+   they read inside a small panel. The launcher circle stays plain. */
+.whynow-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(circle at 28% 38%, #000 0%, transparent 80%);
+  mask-image: radial-gradient(circle at 28% 38%, #000 0%, transparent 80%);
+}
+
+.whynow-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .whynow-panel[hidden] { display: none; }
@@ -1515,16 +1536,45 @@ html.show--consent .whynow { bottom: 15.5rem; }
    panel's caption rather than as a stray label hanging off the left edge. */
 .category {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0;
+  border-top: 1px solid #1e2f3d;
+  text-align: center;
+}
+
+.category-mark {
+  width: 56px;
+  height: 56px;
+  color: var(--paper-0);
+  filter: drop-shadow(0 0 18px rgba(46, 196, 182, 0.3));
+}
+
+.category-mark circle {
+  transform-origin: 32px 32px;
+  animation: mark-blink 0.9s ease-in-out infinite;
+}
+
+@keyframes mark-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.45); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-mark circle { animation: none; }
+}
+
+.category-names {
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.2rem 0.85rem;
-  width: 100%;
-  margin-top: 1.5rem;
-  padding-top: 3rem;
-  padding-bottom: 1rem;
-  border-top: 1px solid #1e2f3d;
-  text-align: center;
 }
 
 .category-abbr {
@@ -1537,6 +1587,8 @@ html.show--consent .whynow { bottom: 15.5rem; }
 }
 
 .category-full {
+  position: relative;
+  top: 3px;
   font-family: var(--font-mono);
   font-size: 0.92rem;
   letter-spacing: 0.14em;
@@ -1546,6 +1598,8 @@ html.show--consent .whynow { bottom: 15.5rem; }
 
 
 @media (max-width: 700px) {
+  .category-mark { width: 50px; height: 50px; }
+
   .category {
     flex-direction: column;
     align-items: center;
@@ -1556,4 +1610,46 @@ html.show--consent .whynow { bottom: 15.5rem; }
   }
   .category-abbr { font-size: 1.85rem; }
   .category-full { font-size: 0.82rem; letter-spacing: 0.13em; }
+}
+
+/* ---- Soft grid on the dark surfaces ------------------------------------- */
+/* The faint squares from the brand card, carried onto every navy area of the
+   site. The radial mask keeps it away from the edges, so it reads as texture
+   rather than as graph paper. */
+.hero,
+.callout-band,
+.band-dark,
+.site-footer {
+  position: relative;
+}
+
+.hero::before,
+.callout-band::before,
+.band-dark::before,
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at 30% 40%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 30% 40%, #000 0%, transparent 72%);
+}
+
+.hero > *,
+.callout-band > *,
+.band-dark > *,
+.site-footer > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* the callout is a shallow band, so it takes a tighter grid and a softer mask */
+.callout-band::before {
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(circle at 22% 50%, #000 0%, transparent 80%);
+  mask-image: radial-gradient(circle at 22% 50%, #000 0%, transparent 80%);
 }

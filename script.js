@@ -123,6 +123,10 @@
     var drift = 0;
     var nextAlertIn = 0.9;
     var alertCount = 0;
+    var beat = 0;
+    var PULSE = 2500;   // one detection every two and a half seconds
+    var FLASH = 1.25;   // how long a single detection stays on screen
+    var flashes = [];   // {alert, age}
     var sinceSample = 0;
 
     function resize() {
@@ -155,7 +159,23 @@
       nextAlertIn = 0.65 + Math.random() * 1.5;
     }
 
+    function spawnFlash() {
+      var live = [];
+      for (var i = 0; i < alerts.length; i++) {
+        var a = alerts[i];
+        if (a.corr && a.x > 24 && a.x < W - 24 && tapeYAt(a.x) !== null) live.push(a);
+      }
+      if (!live.length) return;
+      flashes.push({ alert: live[Math.floor(Math.random() * live.length)], age: 0 });
+    }
+
     function advance(dt) {
+      beat += dt * 1000;
+      if (beat >= PULSE) { beat -= PULSE; spawnFlash(); }
+      for (var fi = flashes.length - 1; fi >= 0; fi--) {
+        flashes[fi].age += dt;
+        if (flashes[fi].age > FLASH) flashes.splice(fi, 1);
+      }
       var dx = SPEED * dt;
       var i;
 
@@ -181,6 +201,20 @@
 
       nextAlertIn -= dt;
       if (nextAlertIn <= 0) spawnAlert();
+    }
+
+    // the height of the tape at a given x, interpolated between samples
+    function tapeYAt(x) {
+      if (points.length < 2) return null;
+      if (x < points[0].x || x > points[points.length - 1].x) return null;
+      for (var i = 1; i < points.length; i++) {
+        if (points[i].x >= x) {
+          var a = points[i - 1], b = points[i];
+          var f = (x - a.x) / Math.max(b.x - a.x, 0.001);
+          return priceY(a.v + (b.v - a.v) * f);
+        }
+      }
+      return null;
     }
 
     function priceY(v) {
@@ -284,6 +318,46 @@
           ctx.globalAlpha = 1;
         }
       }
+
+      // the detections: a dot is born where the dashed line crosses the tape,
+      // flares, and is gone. Nothing sits on the tape between beats.
+      for (var d = 0; d < flashes.length; d++) {
+        var fl = flashes[d];
+        var fx = fl.alert.x;
+        if (fx < 4 || fx > W - 4) continue;
+        var cross = tapeYAt(fx);
+        if (cross === null) continue;
+
+        var ft = fl.age;
+        var grow = Math.min(ft / 0.09, 1);
+        var out = ft < 0.4 ? 1 : Math.max(0, 1 - (ft - 0.4) / (FLASH - 0.4));
+        var ring = Math.min(ft / 0.7, 1);
+        var cx = Math.round(fx) + 0.5;
+
+        ctx.globalAlpha = 0.4 * (1 - ring) * out;
+        ctx.beginPath();
+        ctx.arc(cx, cross, 5 + ring * 22, 0, Math.PI * 2);
+        ctx.fillStyle = CORR;
+        ctx.fill();
+
+        ctx.globalAlpha = 0.85 * (1 - ring) * out;
+        ctx.beginPath();
+        ctx.arc(cx, cross, 5 + ring * 22, 0, Math.PI * 2);
+        ctx.strokeStyle = CORR;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+
+        ctx.globalAlpha = out;
+        ctx.save();
+        ctx.shadowColor = CORR;
+        ctx.shadowBlur = 10 + 18 * (1 - ring);
+        ctx.beginPath();
+        ctx.arc(cx, cross, 4.6 * grow, 0, Math.PI * 2);
+        ctx.fillStyle = CORR;
+        ctx.fill();
+        ctx.restore();
+        ctx.globalAlpha = 1;
+      }
     }
 
     function seed(seconds) {
@@ -345,6 +419,7 @@
       resizeTimer = setTimeout(function () {
         points = [];
         alerts = [];
+        flashes = [];
         resize();
         seed(W / SPEED + 2);
         if (!animate) draw();
