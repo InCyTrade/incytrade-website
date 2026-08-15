@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32"
      role="img" aria-label="InCyTrade">
   <title>InCyTrade</title>
-  <rect width="64" height="64" rx="13" fill="#0B1622"/>
+  <rect width="64" height="64" fill="#0B1622"/>
   <g fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter">
     <path d="M22 14 H12 V50 H22"/>
     <path d="M42 14 H52 V50 H42"/>

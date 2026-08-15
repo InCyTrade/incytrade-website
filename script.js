@@ -413,15 +413,26 @@
       vis.observe(canvas);
     }
 
+    // On a phone, scrolling collapses and expands the browser's own toolbar,
+    // which fires a resize event on every touch even though the page has not
+    // changed shape. Rebuilding the tape there made it appear to restart, so
+    // only a change in WIDTH rebuilds it. A height-only change just re-measures
+    // the canvas and keeps the data it already has.
     var resizeTimer;
+    var lastW = W;
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
-        points = [];
-        alerts = [];
-        flashes = [];
+        var rect = canvas.getBoundingClientRect();
+        var widthChanged = Math.abs(rect.width - lastW) > 2;
         resize();
-        seed(W / SPEED + 2);
+        lastW = W;
+        if (widthChanged) {
+          points = [];
+          alerts = [];
+          flashes = [];
+          seed(W / SPEED + 2);
+        }
         if (!animate) draw();
       }, 150);
     });
