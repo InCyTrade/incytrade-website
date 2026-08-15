@@ -1521,14 +1521,15 @@ html.show--consent .whynow { bottom: 15.5rem; }
   gap: 0.2rem 0.85rem;
   width: 100%;
   margin-top: 1.5rem;
-  padding-top: 1.25rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
   border-top: 1px solid #1e2f3d;
   text-align: center;
 }
 
 .category-abbr {
   font-family: var(--font-mono);
-  font-size: 1.65rem;
+  font-size: 2.1rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--teal-500);
@@ -1537,8 +1538,8 @@ html.show--consent .whynow { bottom: 15.5rem; }
 
 .category-full {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.13em;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted-400);
 }
@@ -1550,8 +1551,9 @@ html.show--consent .whynow { bottom: 15.5rem; }
     align-items: center;
     gap: 0.35rem;
     margin-top: 1.35rem;
-    padding-top: 1.1rem;
+    padding-top: 1.9rem;
+    padding-bottom: 0.5rem;
   }
-  .category-abbr { font-size: 1.5rem; }
-  .category-full { font-size: 0.74rem; letter-spacing: 0.12em; }
+  .category-abbr { font-size: 1.85rem; }
+  .category-full { font-size: 0.82rem; letter-spacing: 0.13em; }
 }
