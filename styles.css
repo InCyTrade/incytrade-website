@@ -217,6 +217,11 @@ section[id] {
    tighten the vertical gaps and lift the type a step, so the page keeps the
    density it has on a desktop. Nothing moves and nothing is removed. */
 @media (max-width: 700px) {
+  /* The manual break belongs to the desktop measure. On a phone it splits the
+     headline into more lines than it needs, so the text wraps on its own. */
+  .hero-quote br { display: none; }
+  .hero-quote { max-width: none; }
+
   /* The display type is where a phone layout usually gives itself away. On a
      desktop the headline has room to breathe at a loose line height. Shrunk to
      a phone it reads like body copy. Larger, tighter and with the tracking
@@ -239,7 +244,8 @@ section[id] {
   .hero-sub { margin-bottom: 1.75rem; }
   .hero-ctas { margin-bottom: 2rem; }
   .hero-viz { margin-top: 0; }
-  .hero-viz-col { margin-bottom: 2.25rem; }
+  .hero-viz-col { margin-top: 0.25rem; margin-bottom: 2rem; }
+  .hero-ctas { margin-bottom: 2.25rem; }
   .viz-canvas { height: 270px; }
   .signal-strip { padding-top: 1.75rem; }
   .section { padding: 3.25rem 0; }
@@ -248,21 +254,36 @@ section[id] {
 
 /* ---- Hero correlation visual ------------------------------------------- */
 
+/* On a phone the chart is the thing worth seeing, so it comes straight after
+   the sentence that sets it up, and the buttons follow. On a desktop nothing
+   moves: the copy and the buttons stack in the left column, the chart holds
+   the right one, and the figures run the full width underneath. */
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
 }
 
-.hero-inner > .signal-strip { grid-column: 1 / -1; }
+.hero-copy { order: 1; }
+.hero-viz-col { order: 2; }
+.hero-ctas { order: 3; }
+.hero-inner > .signal-strip { order: 4; }
 
 @media (min-width: 981px) {
   .hero-inner {
+    display: grid;
     grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    grid-template-areas:
+      "copy viz"
+      "cta  viz"
+      "strip strip";
+    grid-template-rows: auto auto auto;
     column-gap: 3.5rem;
+    align-items: start;
   }
-  .hero-copy { grid-column: 1; }
-  .hero-viz-col { grid-column: 2; }
+  .hero-copy { grid-area: copy; }
+  .hero-ctas { grid-area: cta; }
+  .hero-viz-col { grid-area: viz; }
+  .hero-inner > .signal-strip { grid-area: strip; }
 }
 
 .hero-viz {
@@ -1466,6 +1487,17 @@ html.show--consent .whynow { bottom: 15.5rem; }
 
 @media (max-width: 700px) {
   .whynow { right: 1rem; bottom: 1rem; }
+
+  /* beside the button there is no room on a phone, so the hint sits above it */
+  .whynow-teaser {
+    right: 0;
+    bottom: calc(100% + 0.5rem);
+    transform: translateY(4px);
+  }
+
+  .whynow-fab:hover .whynow-teaser,
+  .whynow-fab:focus-visible .whynow-teaser,
+  .whynow.is-hinting .whynow-teaser { transform: none; }
   html.show--consent .whynow { bottom: 17rem; }
   .whynow-panel { width: calc(100vw - 2rem); }
   .whynow-text { min-height: 9.5rem; }

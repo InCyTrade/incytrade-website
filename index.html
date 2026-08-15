@@ -19,10 +19,48 @@
 <meta name="twitter:title" content="InCyTrade - Cyber-Enabled Insider Trading Detection">
 <meta name="twitter:description" content="InCyTrade correlates market-abuse signals with enterprise cyber and access telemetry to surface cyber-enabled insider trading.">
 <meta name="twitter:image" content="https://incytrade.com/og-image.png">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/icon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="vendor/cookieconsent/cookieconsent.css">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://incytrade.com/#organization",
+      "name": "InCyTrade",
+      "url": "https://incytrade.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://incytrade.com/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://incytrade.com/og-image.png",
+      "email": "support@incytrade.com",
+      "description": "InCyTrade correlates market-abuse signals with enterprise cyber and access telemetry to surface cyber-enabled insider trading.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tel Aviv",
+        "addressCountry": "IL"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://incytrade.com/#website",
+      "url": "https://incytrade.com/",
+      "name": "InCyTrade",
+      "publisher": { "@id": "https://incytrade.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -50,12 +88,13 @@
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <p class="eyebrow eyebrow-on-dark">Intelligence&nbsp;·&nbsp;Cyber&nbsp;·&nbsp;Trade</p>
-        <h1 class="hero-quote">&ldquo;The breach and the trade are the same event.<br>Nobody watches both.&rdquo;</h1>
+        <h1 class="hero-quote">&ldquo;The breach and the trade are the same event. <br>Nobody watches both.&rdquo;</h1>
         <p class="hero-sub">InCyTrade correlates market-abuse signals with enterprise cyber and access telemetry to surface cyber-enabled insider trading - closing the one gap no SOC tool and no market-surveillance tool covers alone.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact">Request a briefing</a>
-          <a class="btn btn-ghost" href="#product">See how it works</a>
-        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Request a briefing</a>
+        <a class="btn btn-ghost" href="#product">See how it works</a>
       </div>
 
       <!-- Decorative. The thesis of the product, drawn: one tape, one telemetry
