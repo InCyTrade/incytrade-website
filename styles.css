@@ -178,7 +178,11 @@ section[id] {
   letter-spacing: 0.04em;
 }
 .nav-cta:hover {
-  background: var(--navy-900);
+  background-color: var(--navy-900);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 14px 14px;
   color: var(--paper-0) !important;
 }
 
@@ -1372,7 +1376,11 @@ html.show--consent .whynow { bottom: 15.5rem; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted-400);
-  background: var(--navy-900);
+  background-color: var(--navy-900);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 14px 14px;
   border: 1px solid #24384a;
   padding: 0.4rem 0.7rem;
   opacity: 0;
