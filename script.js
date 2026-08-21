@@ -38,9 +38,17 @@
   // waits for the one before it, so the sequence reads as a filter running.
   // Values live in the HTML, so with JS off or reduced motion on, the final
   // numbers are simply there.
-  function runSignalStrip() {
+  var replayTimer = null;
+  var REPLAY_EVERY = 5000;   // the figures run again every five seconds
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) clearTimeout(replayTimer);
+  });
+
+  function runSignalStrip(loop) {
     var strip = document.querySelector(".signal-strip");
     if (!strip) return;
+    clearTimeout(replayTimer);
 
     var cells = strip.querySelectorAll(".signal-num");
     var arrows = strip.querySelectorAll(".signal-arrow");
@@ -57,9 +65,28 @@
 
     strip.classList.add("is-live");
 
+    var runStarted = Date.now();
+
     var step = function (index) {
       if (index >= cells.length) {
         strip.classList.add("is-settled");
+        // The narrowing is the point of this strip, so it plays again on a
+        // loop rather than only on the first scroll past it.
+        if (loop) {
+          // five seconds from the start of one run to the start of the next,
+          // not five seconds of standing still
+          var elapsed = Date.now() - runStarted;
+          replayTimer = setTimeout(function () {
+            if (document.hidden) return;
+            arrows.forEach(function (a) { a.classList.remove("is-shown"); });
+            cells.forEach(function (el) {
+              el.classList.remove("is-set", "is-counting");
+            });
+            strip.classList.remove("is-settled");
+            runStarted = Date.now();
+            step(0);
+          }, Math.max(700, REPLAY_EVERY - elapsed));
+        }
         return;
       }
 
@@ -570,7 +597,7 @@
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               stripObserver.unobserve(entry.target);
-              runSignalStrip();
+              runSignalStrip(!prefersReducedMotion);
             }
           });
         },
@@ -579,6 +606,6 @@
       stripObserver.observe(strip);
     }
   } else {
-    runSignalStrip();
+    runSignalStrip(!prefersReducedMotion);
   }
 })();

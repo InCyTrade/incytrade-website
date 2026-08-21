@@ -286,7 +286,21 @@ section[id] {
   }
   .hero-copy { grid-area: copy; }
   .hero-ctas { grid-area: cta; }
-  .hero-viz-col { grid-area: viz; }
+  .hero-viz-col {
+    grid-area: viz;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The rule stays with the caption it separates, and the line of type is
+     centred inside the whole space that remains below it. Auto margins would
+     centre the box, rule and all, which pushes the type to the top of it. */
+  .hero-viz-col > .category {
+    flex: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   .hero-inner > .signal-strip { grid-area: strip; }
 }
 
@@ -395,7 +409,8 @@ section[id] {
 
 .hero-sub {
   max-width: 62ch;
-  font-size: 0.98rem;
+  /* a hair under a rem: at 0.98 the closing word fell to a line of its own */
+  font-size: 0.94rem;
   color: #c7d3dc;
   margin-bottom: 2.25rem;
 }
@@ -953,6 +968,18 @@ section[id] {
   letter-spacing: 0.04em;
 }
 
+.footer-meta a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 1px;
+}
+
+.footer-meta a:hover {
+  color: var(--teal-500);
+  border-bottom-color: var(--teal-500);
+}
+
 .footer-legal {
   display: flex;
   align-items: center;
@@ -1007,7 +1034,22 @@ section[id] {
   color: var(--muted-500);
 }
 
+/* The heading block and the body were two containers of different widths, so
+   the text started well to the right of the title it belonged to. The
+   container now matches the one the heading uses, and the measure is kept
+   comfortable by capping each block of text instead of the column. */
+/* The section below the title band carried the full page rhythm, which left
+   a gap wide enough to read as a mistake. The body now starts close enough
+   to belong to the heading above it. */
+.legal-hero + .section {
+  padding-top: 2.75rem;
+}
+
 .legal-body {
+  max-width: var(--max);
+}
+
+.legal-body > * {
   max-width: 42rem;
 }
 
@@ -1170,14 +1212,19 @@ section[id] {
     display: none;
   }
   .primary-nav.is-open { display: flex; }
-  .primary-nav a {
+  /* The divider rules below are for the plain links only. They used to catch
+     the button too, repainting its bottom edge in the divider colour and then
+     removing it on :last-child, which left it looking sliced off. */
+  .primary-nav a:not(.nav-cta) {
     padding: 0.75rem 0;
     width: 100%;
     border-bottom: 1px solid var(--line-200);
   }
-  .primary-nav a:last-child { border-bottom: none; }
+  .primary-nav a:not(.nav-cta):last-child { border-bottom: none; }
   .nav-cta {
-    margin-top: 0.75rem;
+    width: 100%;
+    margin-top: 0.9rem;
+    padding: 0.7rem 1rem;
     text-align: center;
   }
   .nav-toggle { display: flex; }
@@ -1542,12 +1589,14 @@ html.show--consent .whynow { bottom: 15.5rem; }
    remember, the long form small enough not to compete with the headline. */
 /* Centred under the panel and ruled across its full width, so it reads as the
    panel's caption rather than as a stray label hanging off the left edge. */
+/* One line: the short name, the long name, and the mark closing it, centred
+   in whatever space the chart column leaves over. */
 .category {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1.15rem;
+  gap: 1.1rem;
   width: 100%;
   margin-top: 1rem;
   padding-top: 1rem;
@@ -1557,8 +1606,9 @@ html.show--consent .whynow { bottom: 15.5rem; }
 }
 
 .category-mark {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
+  flex: none;
   color: var(--paper-0);
   filter: drop-shadow(0 0 18px rgba(46, 196, 182, 0.3));
 }
@@ -1606,18 +1656,18 @@ html.show--consent .whynow { bottom: 15.5rem; }
 
 
 @media (max-width: 700px) {
-  .category-mark { width: 50px; height: 50px; }
+  .category-mark { width: 34px; height: 34px; }
 
+  /* the same single line on a phone, scaled to fit the width */
   .category {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
+    gap: 0.6rem;
     margin-top: 1.35rem;
-    padding-top: 1.9rem;
+    padding-top: 1.5rem;
     padding-bottom: 0.5rem;
   }
-  .category-abbr { font-size: 1.85rem; }
-  .category-full { font-size: 0.82rem; letter-spacing: 0.13em; }
+  .category-names { gap: 0.55rem; }
+  .category-abbr { font-size: 1.35rem; }
+  .category-full { font-size: 0.66rem; letter-spacing: 0.1em; }
 }
 
 /* ---- Soft grid on the dark surfaces ------------------------------------- */
@@ -1713,4 +1763,14 @@ html.show--consent .whynow { bottom: 15.5rem; }
   .hero-viz-col { margin-top: 0; margin-bottom: 1.5rem; }
   .hero-viz { margin-top: 0; padding: 0.7rem 0.8rem 0.6rem; }
   .hero-ctas { margin-bottom: 1.9rem; }
+}
+
+
+/* ---- The category line sits between two rules --------------------------- */
+/* The chart column carried a bottom margin, so the space below the line of
+   type was the column's leftover plus that margin, and the line read as
+   sitting high. The column now runs down to the rule above the figures, and
+   the type is centred in the gap the eye actually sees. */
+@media (min-width: 981px) {
+  .hero-inner > .hero-viz-col { margin-bottom: 0; }
 }
