@@ -409,8 +409,9 @@ section[id] {
 
 .hero-sub {
   max-width: 62ch;
-  /* a hair under a rem: at 0.98 the closing word fell to a line of its own */
-  font-size: 0.94rem;
+  /* small enough that the closing word never falls to a line of its own,
+     which it does at 0.94 now that "internal" is in the sentence */
+  font-size: 0.9rem;
   color: #c7d3dc;
   margin-bottom: 2.25rem;
 }
